@@ -1,0 +1,5 @@
+defusedxml==0.6.0
+pbr==5.4.2
+six==1.12.0
+SOAPpy==0.12.22
+wstools==0.4.8
