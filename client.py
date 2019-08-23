@@ -1,7 +1,9 @@
 from SOAPpy import SOAPProxy
 
 server = SOAPProxy('http://localhost:8081/')
-print '2 + 2 = ' + str(server.calcula(2,2,'+'))
-print '5 - 2 = ' + str(server.calcula(5,2,'-'))
-print '2 * 2 = ' + str(server.calcula(2,2,'*'))
-print '6 / 2 = ' + str(server.calcula(6,2,'/'))
+
+while True:
+    temperature = int(raw_input('Temperature: '))
+    scale = raw_input('F or C: ')
+    new_temperature = server.convert(temperature, scale)
+    print("Response: " + str(new_temperature.temperature) + " " + new_temperature.scale)

@@ -1,14 +1,19 @@
 from SOAPpy import SOAPServer
 
-def calcula(op1,op2,operacao):
-        if operacao == '+':
-                return op1 + op2
-        if operacao == '-':
-                return op1 - op2
-        if operacao == '*':
-                return op1 * op2
-        if operacao == '/':
-                return op1 / op2
-server = SOAPServer(('localhost',8081))
-server.registerFunction(calcula)
+
+def convert(temperature, scale):
+        if scale == "F":
+                return {
+                        "temperature": 9/5 * temperature + 32,
+                        "scale": "C"
+                }
+        else:
+                return {
+                        "temperature": (temperature - 32) * 5/9,
+                        "scale": "F"
+                }
+
+
+server = SOAPServer(('localhost', 8081))
+server.registerFunction(convert)
 server.serve_forever()
